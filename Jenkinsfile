@@ -6,6 +6,6 @@ node {
 	}
 	stage ('Sales Taxes Running')
 	{
-		sh cd SalesTax && "java -jar SalesTaxesProblem_PBuzzi.jar"
+		sh "java -jar SalesTaxesProblem_PBuzzi.jar"
 	}
 }
