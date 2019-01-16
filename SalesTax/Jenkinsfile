@@ -1,17 +1,14 @@
 node {
-	stages 
-	{
-		stage('Messaging')
-    		{
-        	echo "Hello World"
-    		}
 
-		stage ('Sales Taxes Running')
-		{
+	stage('Messaging')
+	{
+		echo "Hello World"
+	}
+	stage ('Sales Taxes Running')
+	{
 		steps
 		{
 			sh "java -jar SalesTaxesProblem_PBuzzi.jar"
-           }
-        	}
+		}
 	}
 }
