@@ -1,6 +1,23 @@
-node {
-    stage('Messaging')
-    {
-        echo "Hello World"
+pipeline {
+
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building...'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+            }
+        }
     }
+# This is a comment
 }
