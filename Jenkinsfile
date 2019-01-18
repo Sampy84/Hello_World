@@ -39,6 +39,7 @@ pipeline {
     post {
         always {
             echo 'This will always run'
+			recordIssues enabledForFailure: true, tool: java(pattern: '*.log'), filters: [includeFile('*.java'), excludeCategory('WHITESPACE')]
         }
         success {
             echo 'This will run only if successful'
