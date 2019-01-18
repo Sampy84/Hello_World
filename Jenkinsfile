@@ -1,6 +1,8 @@
 pipeline {
 
-    agent any
+    agent {
+		docker { image 'node:7-alpine' }
+	}
 
     stages {
         stage('Build') {
@@ -11,6 +13,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing...'
+				sh 'node --version'
             }
         }
         stage('Deploy') {
@@ -18,22 +21,6 @@ pipeline {
                 echo 'Deploying...'
             }
         }
-		stage('Retrying') {
-			steps {
-				retry(3) {
-					// Try to execute successfully the below command up to 3 times, otherwhise exit with error code.
-					echo 'Retrying...'
-				}
-			}
-		}
-		stage('Waiting for a timeout') {
-			steps {
-				timeout(time: 1, unit: 'MINUTES') {
-					// Waiting for finish up to 1 minute, otherwhise exit with error code.
-					echo 'Waiting 1 minute...'
-				}
-			}
-		}
     }
 	
     post {
