@@ -42,6 +42,7 @@ pipeline {
 			//recordIssues enabledForFailure: true, tool: java(pattern: '*.xml'), filters: [includeFile('MyFile.*.java'), excludeCategory('WHITESPACE')]
 																				// filters: Chido di visualizzare gli errori solo per i files indicati tramite filtri
 			recordIssues enabledForFailure: true, tool: java()
+			recordIssues enabledForFailure: true, tool: spotBugs()
         }
         success {
             echo 'This will run only if successful'
