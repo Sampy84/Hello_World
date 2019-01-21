@@ -39,7 +39,9 @@ pipeline {
     post {
         always {
             echo 'This will always run'
-			recordIssues enabledForFailure: true, tool: java(pattern: '*.xml'), filters: [includeFile('MyFile.*.java'), excludeCategory('WHITESPACE')]
+			//recordIssues enabledForFailure: true, tool: java(pattern: '*.xml'), filters: [includeFile('MyFile.*.java'), excludeCategory('WHITESPACE')]
+																				// filters: Chido di visualizzare gli errori solo per i files indicati tramite filtri
+			recordIssues enabledForFailure: true, tool: java(pattern: '*.xml')
         }
         success {
             echo 'This will run only if successful'
