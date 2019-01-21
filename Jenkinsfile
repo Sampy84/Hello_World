@@ -41,8 +41,13 @@ pipeline {
             echo 'This will always run'
 			//recordIssues enabledForFailure: true, tool: java(pattern: '*.xml'), filters: [includeFile('MyFile.*.java'), excludeCategory('WHITESPACE')]
 																				// filters: Chido di visualizzare gli errori solo per i files indicati tramite filtri
+			recordIssues enabledForFailure: true, tool: mavenConsole()
 			recordIssues enabledForFailure: true, tool: java()
+			recordIssues enabledForFailure: true, tool: javaDoc()
+			recordIssues enabledForFailure: true, tool: checkStyle()
 			recordIssues enabledForFailure: true, tool: spotBugs()
+			recordIssues enabledForFailure: true, tool: cpd()
+			recordIssues enabledForFailure: true, tool: pmd()
         }
         success {
             echo 'This will run only if successful'
